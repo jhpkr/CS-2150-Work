@@ -1,0 +1,35 @@
+C008 000		jmp		start 		skip variables
+0000 001		x   dw  0			int x
+0000 002		y   dw  0			int y
+0000 003		z   dw  0			int z
+0000 004		sum dw	0			int sum
+0000 005		zero dw 0 
+0000 006		leave space for changes
+0000 007
+3005 008		load zero
+4004 009		store sum
+1000 00A		start	readH		read x
+4001 00B		store 	x	
+1000 00C			    readH		read y
+4002 00D		store	y
+1000 00E				readH		read z
+4003 00F		store 	z
+3004 010		load	sum
+5001 011		add		x
+4004 012		store	sum
+3004 013		load	sum
+5002 014		add		y
+4004 015		store	sum
+3004 016		load	sum
+5003 017		add		z
+4004 018		store	sum
+1800 019		printH 				prints sum
+D01C 01A		jmpe				go to xit
+C000 01B		jmp                go to start
+3001 01C		load	x
+1800 01D		printH
+3002 01E		load	y
+1800 01F		printH
+3003 020		load	z
+1800 021		printH
+0000 022		halt

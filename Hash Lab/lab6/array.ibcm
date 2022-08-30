@@ -1,0 +1,69 @@
+C00A 000		jmp 		skip variables
+0000 001		i dw 0 		iterator
+0000 002		n dw 0 		size of array
+0000 003		zero dw 0 
+0001 004		one  dw 1 
+4000 005		adit dw 4000
+005A 006		a dw TBD 	locator
+3000 007		loadit dw 3000
+0000 008		random variable -> represents end of array
+0000 009		
+1000 00A		readh 		read size of array
+4002 00B		store n
+3003 00C		load zero 	i=0
+4001 00D		store i
+3002 00E		loop load n if (i >= N ) go to xit
+6001 00F		sub i
+E01C 010		jmpl
+D01C 011		jmpe 
+3005 012		load adit
+5006 013		add a
+5001 014		add i 
+4017 015		store doit
+1000 016		readH  		0
+0000 017		doit		(adit(store) + a + i)
+3001 018		load i
+5004 019		add 1
+4001 01A		store i
+C00E 01B		go to loop
+3003 01C		xit, start printing values forward, load 0
+4001 01D		store i
+3002 01E		load n
+6001 01F		sub i
+E02C 020		jmpl
+D02C 021		jmpe
+3007 022		load
+5006 023		adding a
+5001 024		adding i 
+4026 025		storing doit
+0000 026		doit
+1800 027		printH
+3001 028		load i
+5004 029		add 1
+4001 02A		store i
+C01E 02B		jmp
+3002 02C		load n //START OF LOOP
+4008 02D		store n to variable
+3008 02E		load variable
+6004 02F		sub 1
+4008 030		store variable
+3003 031		load zero
+4001 032		store i
+3002 033		loop load n
+6001 034		sub i
+E044 035		jmp
+D044 036		jmp
+3007 037		load loadit
+5006 038		add one
+5008 039		add variable
+403B 03A			storing
+0000 03B			loading
+1800 03C		print
+3001 03D		
+5004 03E
+4001 03F
+3008 040
+6004 041
+4008 042
+C033 043
+0000 044	xit 		load 

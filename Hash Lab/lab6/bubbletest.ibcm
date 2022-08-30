@@ -1,0 +1,114 @@
+C010 000		jmp to skip variables (skipping to 010)
+0000 001		iterator (i) dw 0
+000A 002		n set to size 10
+0000 003		zero dw 0
+0001 004	one dw 1
+4000 005		storeit dw 4000
+6000 006		subit dw 6000
+0090 007		locator (a) used to locate values 
+0000 008		j set to 9 
+0000 009		tmp variable
+0000 00A		k set to 8
+0000 00B		currentValue 
+0000 00C		preValue
+3000 00D		loadit dw 3000
+0009 00E		nine dw
+0008 00F		eight dw 8
+3003 010		load 0 					Comment: start of putting values into array
+4001 011		store i
+3002 012		loop load n 
+6001 013		sub i
+E020 014		jmpl
+D020 015		jmpe
+3005 016		load adit
+5007 017		add a
+5001 018		add i
+401b 019		store doit
+1000 01A		readH
+0000 01B		doit
+3001 01C		load i
+5004 01D		add 1
+4001 01E		store i
+C012 01f		go to loop 				Comment: End of putting alues into array
+3003 020		load zero
+4001 021		store i
+3002 022		load n; if(i >= n) then go to xit ****THIS IS THE FIRST LOOP****
+6001 023		sub i 
+E061 024		jmpl
+D061 025		jmpe
+300E 026		load 9
+4008 027		store j
+300F 028		load 8
+400A 029		store k
+3008 02a		load j; if(i >= j) ****THIS IS THE SECOND FOR LOOP****
+6001 02b	sub	i
+E05d 02c		jmpl to where I increment i
+D05d 02d		jmpe to where I increment i
+3003 02e		load 0
+400B 02f			store current value
+400C 030			store preValue
+4009 031			store tmp
+300B 032		load currentValue 				Comment: Next couple lines figures out where A[j] is located and stores it to CurrentValue
+5007 033		add locator(a)
+5008 034		add j
+400B 035		store currentValue
+300C 036		load preValue			Comment: These couple lines are similar to what was stated above but for finding A[j-1]
+5007 037		add locator(a)
+500A 038		add k
+400C 039		store preValue
+300C 03A		load preValue 			Comment: Now on to the inner if statement
+500D 03b		add adit
+4040 03c		store at doit
+300B 03d		load current value
+5006 03e		add to subit
+4041 03f		store at doitTWO
+0000 040		doit
+0000 041		doitTWO sub currentValue		Comment: If prev - current < 0 -> jmp to when I decrement j and k	
+E056 042		jmpl
+D056 043		jmpe
+300B 044			load CurrentValue
+500D 045					add to loadit
+4047 046					store to doit
+0000 047					doit
+4009 048				storetmp
+300C 049				load preValue 			Comment: A[j] = [j-1]
+500D 04a			add to loadit
+404f 04b		store to do it
+300B 04c				load currentvalue
+5005 04d				add to storeit
+4050 04e			store to doit2
+0000 04f				doit 
+0000 050				doit2
+300C 051				load preValue 			Comment: A[j-1] = tmp
+5005 052				add to store it
+4055 053			store to doit3
+3009 054				load tmp				
+0000 055				doit3					Comment: End of swap
+3008 056		load j
+6004 057		sub 1
+4008 058		store j
+300A 059	load k
+6004 05a		sub 1
+400A 05b		store k
+C02a 05c	jmp to 026 OR whereever I end up starting the SECOND FOR-LOOP
+3001 05d		load i
+5004 05e		add 1
+4001 05f	store i
+C022 060		jmp to first for-loop
+3003 061		load 0 					Comment: Start of printing
+4001 062		store i
+3002 063		load n
+6001 064		sub i
+E071 065		jmpl
+D071 066	jmpe
+300D 067		load loadit
+5007 068		add a
+5001 069		add i
+406b 06a		storing do it
+0000 06b		doit
+1800 06c		printH
+3001 06d		load i
+5004 06e		add 1
+4001 06f		store i
+C063 070		jmp
+0000 071		don

@@ -1,0 +1,19 @@
+arraysize = a (hex for 10)
+int iterator = 0;
+a for keeping track of where the array is
+j = Max - 1 which is 9
+tmp variable
+
+have user input values into the array 
+have the values be at the end of the code
+
+1st for-loop: as long as arraysize - i > 0{
+	2nd for-loop: as long as j - i > 0{
+		A[j] - A[j-1] < 0 means [j-1] is greater 
+		if [j-1] is greater: set tmp = variable
+		A[j] = [j-1]
+		[j-1] = tmp
+	}
+	increment i
+}
+
